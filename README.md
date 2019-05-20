@@ -1,1 +1,0 @@
-# fhashimoto.github.io
