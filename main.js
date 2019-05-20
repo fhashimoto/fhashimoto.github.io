@@ -37,3 +37,11 @@ const imgBanner = (raca) => {
     $("#imgDog").attr("src",novaImg);
   })
 }
+
+const trocarImg = () => {
+  let raca = $("#formRaca").val();
+  let subRaca = ($("#formSubRaca").val());
+  if (subRaca)
+    raca = `${raca}/${subRaca}`;
+  imgBanner(raca);
+}

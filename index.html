@@ -9,13 +9,14 @@
 <body onload="carregando()">
   <div>
     <img src="https://images.dog.ceo/breeds/corgi-cardigan/n02113186_8678.jpg" id="imgDog" style="max-width:500px; height:auto">
-    <!-- <button onclick="trocarImg()">Trocar imagem</button> -->
+    <button onclick="trocarImg()">Trocar imagem</button>
     <select onchange="lista(this.value)" id="formRaca">
       <option selected>Selecione a raça</option>
-      <option id="racas"></option>
+      <option id="racas" style="display:none"></option>
     </select>
     <select id="formSubRaca" style="display:none" onchange="sublista(this.value)">
-      <option id="subraca"></option>
+      <option value="" disabled selected>Selecione a sub-raça</option>
+      <option id="subraca" style="display:none"></option>
     </select>
   </div>
 </body>
