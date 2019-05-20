@@ -4,20 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Lato|Open+Sans|Roboto|Stylish&display=swap" rel="stylesheet">
   <title>Dog Search</title>
 </head>
 <body onload="carregando()">
   <div>
     <img src="https://images.dog.ceo/breeds/corgi-cardigan/n02113186_8678.jpg" id="imgDog" style="max-width:500px; height:auto">
+    <div id="subImg"></div>
+
     <button onclick="trocarImg()">Trocar imagem</button>
+
     <select onchange="lista(this.value)" id="formRaca">
-      <option selected>Selecione a raça</option>
-      <option id="racas" style="display:none"></option>
+      <option value='' disabled selected>Selecione a raça</option>
     </select>
-    <select id="formSubRaca" style="display:none" onchange="sublista(this.value)">
+
+    <select onchange="sublista(this.value)" id="formSubRaca" style="display:none">
       <option value="" disabled selected>Selecione a sub-raça</option>
-      <option id="subraca" style="display:none"></option>
     </select>
+
+    <form>
+      <input type="text" placeholder="Insira o nome do cachorro" oninput="subTitle(event)">
+
+      <select id="corTexto" onchange="attCor(event)">
+        <option value="" disabled selected>Selecione a cor do texto</option>
+        <option value="#0000FF">Azul</option>
+        <option value="#FFFF00">Amarelo</option>
+        <option value="#FF0000">Vermelho</option>
+        <option value="#FFFFFF">Branco</option>
+        <option value="#000000">Preto</option>
+      </select>
+
+      <select id="fontTexto" onchange="attFont(event)">
+        <option value="" disabled selected>Selecione a fonte do texto</option>
+        <option value="Roboto" style="font-family:Roboto">Roboto</option>
+        <option value="Baloo Bhai" style="font-family:Baloo Bhai">Baloo Bhai</option>
+        <option value="Stylish" style="font-family:Stylish">Stylish</option>
+        <option value="Open Sans" style="font-family:Open Sans">Open Sans</option>
+        <option value="Lato" style="font-family:Lato">Lato</option>
+      </select>
+
+    </form>
   </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

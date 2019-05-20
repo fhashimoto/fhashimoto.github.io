@@ -2,17 +2,19 @@ const carregando = () => {
   $.getJSON("https://dog.ceo/api/breeds/list/all", function(data){
     let lista = (Object.keys(data.message));
     lista.forEach(element => {
-      $("#racas").before(`<option value="${element}">${element}</option>`);
+      $("#formRaca").append(`<option value="${element}">${element}</option>`);
     });    
   });
 }
+
 const lista = (raca) => {
   $.getJSON("https://dog.ceo/api/breeds/list/all", function(data){
     let lista = (data.message[raca]);
     if (lista.length>0) {
       $("#formSubRaca").show();
+      $(".subRaca").remove();
       lista.forEach(element => {
-        $("#subraca").before(`<option value="${element}">${element}</option>`)
+        $("#formSubRaca").append(`<option value="${element}" class="subRaca">${element}</option>`);
       })
     }else{
       $("#formSubRaca").hide();
@@ -20,6 +22,7 @@ const lista = (raca) => {
     imgBanner(raca)
   })
 }
+
 const sublista = (subRaca) => {
   let raca = $("#formRaca").val();
   raca += `/${subRaca}`;
@@ -44,4 +47,16 @@ const trocarImg = () => {
   if (subRaca)
     raca = `${raca}/${subRaca}`;
   imgBanner(raca);
+}
+
+const subTitle = (e)=> {
+  $('#subImg').html(e.target.value).css({"color":cor,"font-family":font})
+}
+const attFont = (e) => {
+  let font = e.target.value;
+  $('#subImg').css("font-family",font);
+}
+const attCor = (e) => {
+  let cor = $('#corTexto').val();
+  $('#subImg').css("color",cor);
 }
