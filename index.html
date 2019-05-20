@@ -7,7 +7,18 @@
   <title>Dog Search</title>
 </head>
 <body onload="carregando()">
-  Hello World!
+  <div>
+    <img src="https://images.dog.ceo/breeds/corgi-cardigan/n02113186_8678.jpg" id="imgDog" style="max-width:500px; height:auto">
+    <!-- <button onclick="trocarImg()">Trocar imagem</button> -->
+    <select onchange="lista(this.value)" id="formRaca">
+      <option selected>Selecione a raça</option>
+      <option id="racas"></option>
+    </select>
+    <select id="formSubRaca" style="display:none" onchange="sublista(this.value)">
+      <option id="subraca"></option>
+    </select>
+  </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="main.js"></script>
 </html>
