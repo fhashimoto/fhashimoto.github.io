@@ -92,7 +92,7 @@ const listaSalva = () => {
       $('.listAll').append(
         `
         <figure class="text-center">
-          <img src="${dog.img}" class="img-fluid">
+          <img src="${dog.img}" class="img-fluid border border-primary p-1">
           <figcaption style="color:${dog.cor};font-family:${dog.font};font-size:${dog.size}px; position:relative; top:-2em">${dog.nome}</figcaption>
         </figure>
         `
