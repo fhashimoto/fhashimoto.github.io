@@ -5,6 +5,7 @@ const carregando = () => {
       $("#formRaca").append(`<option value="${element}">${element}</option>`);
     });    
   });
+  listaSalva();
 }
 
 const lista = (raca) => {
@@ -43,14 +44,14 @@ const imgBanner = (raca) => {
 
 const trocarImg = () => {
   let raca = $("#formRaca").val();
-  let subRaca = ($("#formSubRaca").val());
+  let subRaca = $("#formSubRaca").val();
   if (subRaca)
     raca = `${raca}/${subRaca}`;
   imgBanner(raca);
 }
 
 const subTitle = (e)=> {
-  $('#subImg').html(e.target.value).css({"color":cor,"font-family":font})
+  $('#subImg').html(e.target.value);
 }
 const attFont = (e) => {
   let font = e.target.value;
@@ -59,4 +60,31 @@ const attFont = (e) => {
 const attCor = (e) => {
   let cor = $('#corTexto').val();
   $('#subImg').css("color",cor);
+}
+
+const handleSave = () => {
+  let file = {
+    img: $('#imgDog').attr('src'),
+    raca: $("#formRaca").val(),
+    subRaca: $("#formSubRaca").val(),
+    nome: $("#subImg").text(),
+    cor: $("#corTexto").val(),
+    font: $("#fontTexto").val(),
+    data: (new Date()).toString()
+  }
+  let key = (new Date()).getTime(); 
+  localStorage.setItem(key, JSON.stringify(file));
+}
+
+const listaSalva = () => {
+  console.log("ENTROU?");
+  
+  if (localStorage.length > 0){
+    let keys = Object.keys(localStorage);
+    keys.forEach(element => {
+      let dog = JSON.parse(localStorage.getItem(element));
+      console.log(dog);
+      
+    });
+  }
 }

@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Lato|Open+Sans|Roboto|Stylish&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
   <title>Dog Search</title>
 </head>
 <body onload="carregando()">
   <div>
+    <h1>Adicione um dog</h1>
     <img src="https://images.dog.ceo/breeds/corgi-cardigan/n02113186_8678.jpg" id="imgDog" style="max-width:500px; height:auto">
     <div id="subImg"></div>
 
@@ -27,11 +29,11 @@
 
       <select id="corTexto" onchange="attCor(event)">
         <option value="" disabled selected>Selecione a cor do texto</option>
-        <option value="#0000FF">Azul</option>
-        <option value="#FFFF00">Amarelo</option>
-        <option value="#FF0000">Vermelho</option>
-        <option value="#FFFFFF">Branco</option>
-        <option value="#000000">Preto</option>
+        <option value="#0000FF" style="color:#0000FF">Azul</option>
+        <option value="#FFFF00" style="color:#FFFF00">Amarelo</option>
+        <option value="#FF0000" style="color:#FF0000">Vermelho</option>
+        <option value="#FFFFFF" style="color:#FFFFFF; background-color:#000000">Branco</option>
+        <option value="#000000" style="color:#000000">Preto</option>
       </select>
 
       <select id="fontTexto" onchange="attFont(event)">
@@ -44,6 +46,14 @@
       </select>
 
     </form>
+
+    <button onclick="handleSave()">SALVAR</button>
+  </div>
+  <div>
+    <h1>Meus dogs</h1>
+    <div class="listAll">
+
+    </div>
   </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
