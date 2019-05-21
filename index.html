@@ -4,58 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Lato|Open+Sans|Roboto|Stylish&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="main.css">
   <title>Dog Search</title>
 </head>
 <body onload="carregando()">
-  <div>
+  <div class="container">
     <h1>Adicione um dog</h1>
-    <img src="https://images.dog.ceo/breeds/corgi-cardigan/n02113186_8678.jpg" id="imgDog" style="max-width:500px; height:auto">
-    <div id="subImg"></div>
+    <div class="row">
 
-    <button onclick="trocarImg()">Trocar imagem</button>
+      <div class="col-6">
+        <figure class="text-center">
+          <img src="https://images.dog.ceo/breeds/corgi-cardigan/n02113186_8678.jpg" id="imgDog" style="max-width:500px; height:auto">
+          <figcaption id="subImg" style="font-weight: bold; position: relative; top: -2em"></figcaption>
+        </figure>
+      </div>
 
-    <select onchange="lista(this.value)" id="formRaca">
-      <option value='' disabled selected>Selecione a raça</option>
-    </select>
+      <div class="col-6 d-flex flex-column">
 
-    <select onchange="sublista(this.value)" id="formSubRaca" style="display:none">
-      <option value="" disabled selected>Selecione a sub-raça</option>
-    </select>
+        <select onchange="lista(this.value)" id="formRaca" class="custom-select mb-3">
+          <option value='' disabled selected>Selecione a raça</option>
+        </select>
 
-    <form>
-      <input type="text" placeholder="Insira o nome do cachorro" oninput="subTitle(event)">
+        <select onchange="sublista(this.value)" id="formSubRaca" style="display:none" class="custom-select mb-3">
+          <option value="" disabled selected>Selecione a sub-raça</option>
+        </select>
 
-      <select id="corTexto" onchange="attCor(event)">
-        <option value="" disabled selected>Selecione a cor do texto</option>
-        <option value="#0000FF" style="color:#0000FF">Azul</option>
-        <option value="#FFFF00" style="color:#FFFF00">Amarelo</option>
-        <option value="#FF0000" style="color:#FF0000">Vermelho</option>
-        <option value="#FFFFFF" style="color:#FFFFFF; background-color:#000000">Branco</option>
-        <option value="#000000" style="color:#000000">Preto</option>
-      </select>
+        <input type="text" placeholder="Insira o nome do cachorro" oninput="subTitle(event)" class="form-control mb-3" aria-label="Default" aria-describedby="inputGroup-sizing-default">
 
-      <select id="fontTexto" onchange="attFont(event)">
-        <option value="" disabled selected>Selecione a fonte do texto</option>
-        <option value="Roboto" style="font-family:Roboto">Roboto</option>
-        <option value="Baloo Bhai" style="font-family:Baloo Bhai">Baloo Bhai</option>
-        <option value="Stylish" style="font-family:Stylish">Stylish</option>
-        <option value="Open Sans" style="font-family:Open Sans">Open Sans</option>
-        <option value="Lato" style="font-family:Lato">Lato</option>
-      </select>
+        <select id="corTexto" onchange="attCor(event)" class="custom-select mb-3">
+          <option value="" disabled selected>Selecione a cor do texto</option>
+          <option value="#0000FF" style="color:#0000FF">Azul</option>
+          <option value="#FFFF00" style="color:#FFFF00">Amarelo</option>
+          <option value="#FF0000" style="color:#FF0000">Vermelho</option>
+          <option value="#FFFFFF" style="color:#FFFFFF; background-color:#000000">Branco</option>
+          <option value="#000000" style="color:#000000">Preto</option>
+        </select>
 
-    </form>
+        <select id="fontTexto" onchange="attFont(event)" class="custom-select mb-3">
+          <option value="" disabled selected>Selecione a fonte do texto</option>
+          <option value="Roboto" style="font-family:Roboto">Roboto</option>
+          <option value="Baloo Bhai" style="font-family:Baloo Bhai">Baloo Bhai</option>
+          <option value="Stylish" style="font-family:Stylish">Stylish</option>
+          <option value="Open Sans" style="font-family:Open Sans">Open Sans</option>
+          <option value="Lato" style="font-family:Lato">Lato</option>
+        </select>
+        <label>Selecione o tamanho do texto</label>
+        <input type="number" value="20" onchange="attSize(event)" class="form-control mb-3" aria-label="Default" aria-describedby="inputGroup-sizing-default" id="fontSize"/>
+        
+        <button onclick="trocarImg()" class="btn btn-info w-50 mx-auto mb-3"><i class="fas fa-random"></i> Trocar imagem</button>
 
-    <button onclick="handleSave()">SALVAR</button>
+        <button onclick="handleSave()" class="btn btn-success w-50 mx-auto mb-3"><i class="far fa-save"></i> SALVAR</button>
+
+      </div>
+
+
+    </div>
   </div>
-  <div>
+  <div class="container">
     <h1>Meus dogs</h1>
-    <div class="listAll">
+    <div class="listAll d-flex flex-wrap align-items-center justify-content-around">
 
     </div>
   </div>
 </body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="main.js"></script>
 </html>

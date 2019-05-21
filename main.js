@@ -19,6 +19,7 @@ const lista = (raca) => {
       })
     }else{
       $("#formSubRaca").hide();
+      $(".subRaca").remove();
     }
     imgBanner(raca)
   })
@@ -61,6 +62,10 @@ const attCor = (e) => {
   let cor = $('#corTexto').val();
   $('#subImg').css("color",cor);
 }
+const attSize = (e) => {
+  let size = `${e.target.value}px`;
+  $('#subImg').css('font-size',size);
+}
 
 const handleSave = () => {
   let file = {
@@ -70,21 +75,28 @@ const handleSave = () => {
     nome: $("#subImg").text(),
     cor: $("#corTexto").val(),
     font: $("#fontTexto").val(),
+    size: $("#fontSize").val(),
     data: (new Date()).toString()
   }
   let key = (new Date()).getTime(); 
   localStorage.setItem(key, JSON.stringify(file));
+  alert('Dog registrado com sucesso');
+  location.reload();
 }
 
-const listaSalva = () => {
-  console.log("ENTROU?");
-  
+const listaSalva = () => {  
   if (localStorage.length > 0){
     let keys = Object.keys(localStorage);
     keys.forEach(element => {
       let dog = JSON.parse(localStorage.getItem(element));
-      console.log(dog);
-      
+      $('.listAll').append(
+        `
+        <figure class="text-center">
+          <img src="${dog.img}" style="max-width:500px; height:auto">
+          <figcaption style="color:${dog.cor};font-family:${dog.font};font-size:${dog.size}px; position:relative; top:-50px">${dog.nome}</figcaption>
+        </figure>
+        `
+      )
     });
   }
 }
